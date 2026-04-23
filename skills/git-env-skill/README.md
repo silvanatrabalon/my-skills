@@ -27,9 +27,12 @@ All operations are **idempotent** — safe to re-run without duplicating or over
 
 ```
 git-env-skill/
-├── skill.md       # Skill definition: triggers, inputs, flow, validation rules
-├── add-env.sh     # Bash script — the actual implementation
-└── README.md      # This file
+├── SKILL.md           # Skill definition: triggers, inputs, flow, validation rules
+├── scripts/
+│   └── add-env.sh     # Bash script — the actual implementation
+├── evals/
+│   └── evals.json     # Test cases
+└── README.md          # This file
 ```
 
 ---
@@ -54,13 +57,13 @@ cp -r git-env-skill ~/tools/git-env-skill
 2. Make the script executable:
 
 ```bash
-chmod +x ~/tools/git-env-skill/add-env.sh
+chmod +x ~/tools/git-env-skill/scripts/add-env.sh
 ```
 
 3. (Optional) Add an alias to your shell profile (`~/.zshrc` or `~/.bashrc`):
 
 ```bash
-alias git-add-env="~/tools/git-env-skill/add-env.sh"
+alias git-add-env="~/tools/git-env-skill/scripts/add-env.sh"
 ```
 
 Then reload:
@@ -78,13 +81,13 @@ source ~/.zshrc
 Run without arguments — the script will prompt for each required value:
 
 ```bash
-./add-env.sh
+bash scripts/add-env.sh
 ```
 
 ### With flags
 
 ```bash
-./add-env.sh \
+bash scripts/add-env.sh \
   --env acme \
   --email dev@acme.com \
   --provider github \
@@ -111,7 +114,7 @@ Run without arguments — the script will prompt for each required value:
 ### Add a GitHub identity for a new company
 
 ```bash
-./add-env.sh \
+bash scripts/add-env.sh \
   --env acme \
   --email silvana@acme.com \
   --provider github \
@@ -149,7 +152,7 @@ Run without arguments — the script will prompt for each required value:
 ### Add an Azure DevOps identity
 
 ```bash
-./add-env.sh \
+bash scripts/add-env.sh \
   --env aldevron \
   --email silvana@aldevron.com \
   --provider azure \
@@ -160,7 +163,7 @@ Run without arguments — the script will prompt for each required value:
 ### Preview without applying (dry-run)
 
 ```bash
-./add-env.sh \
+bash scripts/add-env.sh \
   --env acme \
   --email silvana@acme.com \
   --provider github \
@@ -257,4 +260,4 @@ This skill is designed to complement an existing multi-identity layout:
 
 ## Skill Definition
 
-See [`skill.md`](./skill.md) for the full skill specification including trigger conditions, input schema, step-by-step flow, and validation rules.
+See [`SKILL.md`](./SKILL.md) for the full skill specification including trigger conditions, input schema, step-by-step flow, and validation rules.

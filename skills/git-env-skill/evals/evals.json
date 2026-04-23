@@ -1,0 +1,44 @@
+{
+  "skill_name": "git-env-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just landed a new freelance contract with a company called Nexus. I need to set up a completely separate Git identity for them — their GitHub org is nexus-corp and they want me to use silvana@nexus-corp.com as my commit email. I already have my personal and one other work account configured. Can you add the new environment for me?",
+      "expected_output": "Runs add-env.sh (or dry-run) with --env nexus --email silvana@nexus-corp.com --provider github. Creates ~/repos/nexus-repos/, ~/.gitconfig-nexus, appends includeIf to ~/.gitconfig, appends Host github-nexus to ~/.ssh/config. Prints post-setup instructions including how to upload the public key and how to clone using github-nexus:<org>/<repo>.git.",
+      "files": [],
+      "expectations": [
+        "The script is invoked with --env nexus and --email silvana@nexus-corp.com",
+        "The provider used is github, resulting in SSH host alias 'github-nexus'",
+        "The output includes the repos directory path ~/repos/nexus-repos/",
+        "The output includes a clone example using the alias 'github-nexus'",
+        "The output reminds the user to upload the public SSH key to GitHub"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I need to add an Azure DevOps environment for a client called Aldevron. My email there is s.garcia@aldevron.com. I don't have an SSH key yet so please generate one too. Use the key name id_ed25519_aldevron.",
+      "expected_output": "Runs add-env.sh with --env aldevron --email s.garcia@aldevron.com --provider azure --key id_ed25519_aldevron --gen-key. Creates repos folder, gitconfig, SSH config Host alias azure-aldevron. Generates the key. Prints clone example using azure-aldevron:v3/<org>/<project>/<repo>.",
+      "files": [],
+      "expectations": [
+        "The script is invoked with --provider azure, resulting in SSH host alias 'azure-aldevron'",
+        "The --gen-key flag is used",
+        "The clone example uses the format azure-aldevron:v3/<org>/<project>/<repo>",
+        "The output includes instructions to upload the key to Azure DevOps user settings",
+        "The SSH Host HostName is ssh.dev.azure.com"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want to preview what would happen if I added a new git environment for a company called 'Sunny' with email me@sunny.io on GitHub, key id_ed25519_sunny. Don't actually change anything yet.",
+      "expected_output": "Runs add-env.sh with --dry-run. All steps are printed as [DRY-RUN] actions. No files are actually created or modified. The output shows what would be added to ~/.gitconfig, ~/.ssh/config, etc.",
+      "files": [],
+      "expectations": [
+        "The --dry-run flag is used",
+        "Output contains [DRY-RUN] markers indicating no changes were applied",
+        "The SSH host alias shown is 'github-sunny'",
+        "The includeIf block for ~/repos/sunny-repos/ is shown in the dry-run output",
+        "No actual files are created (only simulated)"
+      ]
+    }
+  ]
+}

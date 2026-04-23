@@ -1,99 +1,50 @@
-# Skill: Add Git Environment
+---
+name: git-env-skill
+description: Set up a new Git identity environment on macOS — creates the repos folder, per-identity gitconfig, SSH config Host alias, and optionally generates the SSH key. Use this skill whenever a user needs to add a new Git account, onboard a new client or company identity, configure a separate work or personal Git profile, set up SSH for a new GitHub or Azure DevOps account, or isolate Git identities by folder. Trigger even if the user only mentions "new git account", "work git setup", "separate SSH key for company", or "configure git for a new client".
+allowed-tools: Bash
+---
 
-**ID:** `git-env/add-env`  
-**Version:** 1.0.0  
-**Trigger:** When a user needs to add a new Git identity/account to their local multi-environment setup.  
-**Script:** [`add-env.sh`](./add-env.sh)
+# Git Environment Setup Skill
+
+**Audience:** Developers using multiple Git identities (personal + multiple companies/clients) on macOS, with folder-based identity isolation via `~/.gitconfig` `includeIf`.
+
+**Goal:** Automate the full setup of a new Git environment — repos folder, identity gitconfig, SSH Host alias, and optional key generation — safely and idempotently.
+
+**Script:** `scripts/add-env.sh`
 
 ---
 
-## When to Use This Skill
+## Inputs
 
-Trigger this skill when the user says something like:
+### Required
 
-- "I need to add a new Git identity for `<company>`"
-- "Set up a new work account for `<provider>`"
-- "Add a Git environment for `<env-name>`"
-- "Configure Git and SSH for a new client"
-- "I'm starting to work with a new company and need to separate Git identities"
+| Flag | Description | Validation |
+|------|-------------|------------|
+| `--env` | Short environment name (e.g. `acme`) | Lowercase, `[a-z0-9_-]+`, no spaces |
+| `--email` | Git email for this identity | Valid email format |
+| `--provider` | Git hosting provider | `github` or `azure` only |
+| `--key` | SSH key filename (e.g. `id_ed25519_acme`) | Non-empty |
 
----
+### Optional
 
-## Required Inputs
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--gen-key` | Generate an `ed25519` SSH key automatically | off |
+| `--dry-run` | Print all actions without applying them | off |
 
-| Input        | Flag          | Description                                     | Validation                          |
-|--------------|---------------|-------------------------------------------------|-------------------------------------|
-| `env`        | `--env`       | Short environment name (e.g. `acme`)            | Lowercase, no spaces, `[a-z0-9_-]+` |
-| `email`      | `--email`     | Git email address for this identity             | Valid email format                  |
-| `provider`   | `--provider`  | Git hosting provider                            | Must be `github` or `azure`         |
-| `key`        | `--key`       | SSH key filename (without path)                 | Non-empty string                    |
-
-## Optional Inputs
-
-| Input        | Flag          | Description                                     | Default |
-|--------------|---------------|-------------------------------------------------|---------|
-| `gen-key`    | `--gen-key`   | Auto-generate the SSH key using `ed25519`       | `false` |
-| `dry-run`    | `--dry-run`   | Simulate all actions without applying them      | `false` |
+If any required flag is omitted, the script prompts interactively.
 
 ---
 
-## Flow
+## Steps
 
-```
-START
-  │
-  ├─ 1. Collect & validate inputs
-  │       └─ ENV_NAME, GIT_EMAIL, PROVIDER, SSH_KEY
-  │
-  ├─ 2. Create repos directory
-  │       └─ ~/repos/<env>-repos/
-  │
-  ├─ 3. Create gitconfig file
-  │       └─ ~/.gitconfig-<env>
-  │           [user] name, email
-  │           [core] sshCommand using key path
-  │
-  ├─ 4. Update ~/.gitconfig
-  │       └─ Append [includeIf "gitdir:~/repos/<env>-repos/"]
-  │           → path = ~/.gitconfig-<env>
-  │
-  ├─ 5. Update ~/.ssh/config
-  │       └─ Append Host <provider>-<env> block
-  │           HostName, User git, IdentityFile, IdentitiesOnly yes
-  │
-  ├─ 6. (Optional) Generate SSH key
-  │       └─ ssh-keygen -t ed25519 -C <email> -f ~/.ssh/<key>
-  │           + ssh-add to agent
-  │
-  └─ 7. Print final summary + next steps
-          └─ How to upload public key, test connection, clone repos
-```
-
----
-
-## Validation Rules
-
-| Rule | Detail |
-|------|--------|
-| `ENV_NAME` must be lowercase | Reject if it contains uppercase, spaces, or special chars outside `[a-z0-9_-]` |
-| `GIT_EMAIL` must be valid | Reject malformed emails |
-| `PROVIDER` must be `github` or `azure` | Reject any other value |
-| SSH key path must not already exist (when `--gen-key`) | Warn and skip generation, do not overwrite |
-| `includeIf` block must not be duplicated | Check before appending to `~/.gitconfig` |
-| SSH `Host` block must not be duplicated | Check before appending to `~/.ssh/config` |
-| Repos directory duplication is safe | `mkdir -p` is used — warn and continue |
-
----
-
-## Files Modified
-
-| File | Action |
-|------|--------|
-| `~/repos/<env>-repos/` | Created (directory) |
-| `~/.gitconfig-<env>` | Created (new file) |
-| `~/.gitconfig` | Appended `includeIf` block |
-| `~/.ssh/config` | Appended `Host` block |
-| `~/.ssh/<key>` | Created (if `--gen-key`) |
+1. **Validate inputs** — reject invalid `ENV_NAME` (non-lowercase/spaces), malformed email, unknown provider.
+2. **Create `~/repos/<env>-repos/`** — idempotent; warns if already exists.
+3. **Create `~/.gitconfig-<env>`** — sets `[user] name` and `email`, `[core] sshCommand` pointing to the key. Skips if file already exists.
+4. **Append `includeIf` to `~/.gitconfig`** — condition: `gitdir:~/repos/<env>-repos/`. Checks for duplicates before appending. Creates the file if missing.
+5. **Append `Host` block to `~/.ssh/config`** — sets `HostName`, `User git`, `IdentityFile`, `IdentitiesOnly yes`. Checks for duplicates. Creates the file (`chmod 600`) if missing.
+6. **Generate SSH key (if `--gen-key`)** — `ssh-keygen -t ed25519`, then `ssh-add`. Skips if key already exists.
+7. **Print summary** — repos path, config path, SSH alias, and exact commands to upload public key, test SSH, and clone repos.
 
 ---
 
@@ -150,15 +101,15 @@ After the script completes, remind the user to:
 
 ---
 
-## Example Invocation
+## Example Invocations
 
 ```bash
-# With all flags
-./add-env.sh --env acme --email dev@acme.com --provider github --key id_ed25519_acme --gen-key
+# Full setup with key generation
+bash scripts/add-env.sh --env acme --email dev@acme.com --provider github --key id_ed25519_acme --gen-key
 
-# Dry-run to preview changes
-./add-env.sh --env acme --email dev@acme.com --provider github --key id_ed25519_acme --dry-run
+# Preview without applying
+bash scripts/add-env.sh --env acme --email dev@acme.com --provider github --key id_ed25519_acme --dry-run
 
-# Interactive (prompts for each value)
-./add-env.sh
+# Interactive mode
+bash scripts/add-env.sh
 ```
