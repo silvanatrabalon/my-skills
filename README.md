@@ -12,6 +12,7 @@ A collection of reusable AI skills for Claude.
 | [`excalidraw-diagram`](./skills/excalidraw-diagram) | Create Excalidraw diagram JSON files that make visual arguments from workflows, architectures, or concepts. |
 | [`skill-creator`](./skills/skill-creator) | Create new skills from scratch, improve existing ones, run evals, and benchmark skill performance. |
 | [`skill-linter`](./skills/skill-linter) | Validate skills against the agentskills.io specification — frontmatter, structure, line limits, and content quality rules. |
+| [`cv-builder`](./skills/cv-builder) | Interview the user for CV/resume data and render an ATS-optimized, single-column PDF for software engineering roles, tailored to a target job posting. |
 
 ---
 
@@ -34,4 +35,5 @@ npx skills add github:silvanatrabalon/my-skills/skills/git-env-skill
 npx skills add github:silvanatrabalon/my-skills/skills/excalidraw-diagram
 npx skills add github:silvanatrabalon/my-skills/skills/skill-creator
 npx skills add github:silvanatrabalon/my-skills/skills/skill-linter
+npx skills add github:silvanatrabalon/my-skills/skills/cv-builder
 ```
