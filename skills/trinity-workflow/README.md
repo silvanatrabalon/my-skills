@@ -36,3 +36,61 @@ Never overwrites `openspec/`, the backlog, `CONTRIBUTING.md`, or `CLAUDE.md` if 
 ## After setup
 
 Add the team's first real item to the backlog and start the day-to-day flow from step 1 (refine with the right agent, then `/opsx:propose`) — documented in full in the `CONTRIBUTING.md` this skill writes.
+
+---
+
+## Demo video
+
+<p align="center">
+  <video src="./assets/video/trinity-workflow-demo.mp4" controls width="100%"></video>
+</p>
+
+---
+
+## Slides
+
+<p align="center">
+  <img src="./assets/slides/slide-01.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-02.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-03.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-04.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-05.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-06.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-07.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-08.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-09.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-10.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-11.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-12.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-13.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-14.jpg" width="100%">
+</p>
+<p align="center">
+  <img src="./assets/slides/slide-15.jpg" width="100%">
+</p>
