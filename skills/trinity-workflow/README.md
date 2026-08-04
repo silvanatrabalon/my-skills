@@ -41,8 +41,12 @@ Add the team's first real item to the backlog and start the day-to-day flow from
 
 ## Demo video
 
+GitHub doesn't inline-play `<video>` tags pointing at files committed to the repo — click the thumbnail below to open the file on GitHub, which renders it with a native player.
+
 <p align="center">
-  <video src="./assets/video/trinity-workflow-demo.mp4" controls width="100%"></video>
+  <a href="./assets/video/trinity-workflow-demo.mp4">
+    <img src="./assets/video/thumbnail.jpg" width="100%" alt="Watch the Trinity Workflow demo video">
+  </a>
 </p>
 
 ---
