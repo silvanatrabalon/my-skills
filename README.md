@@ -18,6 +18,7 @@ A collection of reusable AI skills for Claude.
 | [`run-tests`](./skills/run-tests) | Run tests at the right scope — full suite, workspace, directory, or single file — with the correct command across Node, Python, Go, and Rust. |
 | [`investigate-ci-failure`](./skills/investigate-ci-failure) | Investigate a failing CI check (GitHub Actions, Jenkins, CircleCI) and return a short root-cause summary with file:line citations instead of raw log output. |
 | [`explore`](./skills/explore) | Thinking-partner mode for exploring ideas, investigating problems, and comparing options with diagrams — before or instead of implementing. |
+| [`adr-scaffold`](./skills/adr-scaffold) | Bootstrap an Architecture Decision Records (ADR) folder structure (`docs/decisions/`) in a repo for the first time, with a worked example and an archive lifecycle. |
 
 ---
 
@@ -49,4 +50,5 @@ npx skills add github:silvanatrabalon/my-skills/skills/open-pull-request -a clau
 npx skills add github:silvanatrabalon/my-skills/skills/run-tests -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/investigate-ci-failure -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/explore -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/adr-scaffold -a claude-code
 ```
