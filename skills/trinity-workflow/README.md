@@ -17,7 +17,7 @@ This skill only runs the **setup** once per repo. It does not implement any feat
 | 2 | Writes the real project stack/conventions into `openspec/config.yaml` |
 | 3 | Asks how the team wants the backlog organized (single file, per-sprint, per-release, or custom) and sets it up |
 | 4 | Creates `architect`, `backend-developer`, and `frontend-developer` agents, grounded in this repo's actual stack |
-| 5 | Verifies or creates a `conventional-commit` skill |
+| 5 | Verifies the `conventional-commit` skill is present, installing it from [this repo](https://github.com/silvanatrabalon/my-skills/tree/main/skills/conventional-commit) via `npx skills add` if it's missing |
 | 6 | Documents the full 9-step Trinity flow in `CONTRIBUTING.md` |
 | 7 | Adds a short pointer to Trinity in `CLAUDE.md` |
 | 8 | Summarizes what was installed vs. what still needs manual review |
@@ -44,8 +44,8 @@ Add the team's first real item to the backlog and start the day-to-day flow from
 GitHub doesn't inline-play `<video>` tags pointing at files committed to the repo — click the thumbnail below to open the file on GitHub, which renders it with a native player.
 
 <p align="center">
-  <a href="./assets/video/trinity-workflow-demo.mp4">
-    <img src="./assets/video/thumbnail.jpg" width="100%" alt="Watch the Trinity Workflow demo video">
+  <a href="../../media/trinity-workflow/video/trinity-workflow-demo.mp4">
+    <img src="../../media/trinity-workflow/video/thumbnail.jpg" width="100%" alt="Watch the Trinity Workflow demo video">
   </a>
 </p>
 
@@ -54,47 +54,47 @@ GitHub doesn't inline-play `<video>` tags pointing at files committed to the rep
 ## Slides
 
 <p align="center">
-  <img src="./assets/slides/slide-01.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-01.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-02.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-02.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-03.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-03.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-04.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-04.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-05.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-05.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-06.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-06.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-07.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-07.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-08.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-08.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-09.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-09.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-10.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-10.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-11.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-11.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-12.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-12.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-13.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-13.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-14.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-14.jpg" width="100%">
 </p>
 <p align="center">
-  <img src="./assets/slides/slide-15.jpg" width="100%">
+  <img src="../../media/trinity-workflow/slides/slide-15.jpg" width="100%">
 </p>

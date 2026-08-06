@@ -81,9 +81,17 @@ Use `references/agent-templates.md` for the skeleton and exactly what each secti
 
 Don't fill a section with generic placeholder content. If you don't have enough information about the repo to complete a section, ask instead of inventing it.
 
-## Setup Step 5 — Verify or create the conventional-commit skill
+## Setup Step 5 — Verify or install the conventional-commit skill
 
-Check whether a conventional-commit skill for Claude Code already exists in this repo (e.g. `.claude/skills/conventional-commit/`). If not, create a simple one that applies the Conventional Commits format when closing a feature and when archiving it — day-to-day flow steps 7 and 9 depend on it existing.
+Check whether a conventional-commit skill for Claude Code already exists in this repo (e.g. `.claude/skills/conventional-commit/`). Day-to-day flow steps 7 and 9 depend on it existing.
+
+If it's missing, **install the real one from this same skill's source repo** rather than writing a generic equivalent from scratch:
+
+```bash
+npx skills add github:silvanatrabalon/my-skills/skills/conventional-commit
+```
+
+This is the same skill trinity-workflow itself ships from — reuse it instead of reinventing it. Only fall back to writing a simple equivalent by hand if `npx` isn't available or the install genuinely fails (e.g. no network access); tell the user which case applied.
 
 ## Setup Step 6 — Document Trinity in `CONTRIBUTING.md`
 
