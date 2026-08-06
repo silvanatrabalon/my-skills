@@ -35,7 +35,7 @@ That's the only dependency. The render script produces the PDF directly (no `pdf
 ## Installation
 
 ```bash
-npx skills add github:silvanatrabalon/my-skills/skills/cv-builder
+npx skills add github:silvanatrabalon/my-skills/skills/cv-builder -a claude-code
 ```
 
 Or copy the folder directly into your agent's skills directory (e.g. `.claude/skills/cv-builder`).

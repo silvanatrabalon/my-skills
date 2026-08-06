@@ -14,6 +14,7 @@ A collection of reusable AI skills for Claude.
 | [`skill-linter`](./skills/skill-linter) | Validate skills against the agentskills.io specification — frontmatter, structure, line limits, and content quality rules. |
 | [`cv-builder`](./skills/cv-builder) | Interview the user for CV/resume data and render an ATS-optimized, single-column PDF for software engineering roles, tailored to a target job posting. |
 | [`trinity-workflow`](./skills/trinity-workflow) | Bootstrap the Trinity Workflow in a repo for the first time: OpenSpec + project-tuned backlog-refinement agents, so every feature goes through a reviewed proposal before implementation. |
+| [`open-pull-request`](./skills/open-pull-request) | Push the current branch and open a well-structured GitHub pull request via `gh`, with a consistent title format and a body that always answers what changed and how to test it. |
 
 ---
 
@@ -26,16 +27,20 @@ Install the [Skills Manager](https://marketplace.visualstudio.com/items?itemName
 ### Option 2 — CLI
 
 ```bash
-npx skills add github:silvanatrabalon/my-skills/skills/<skill-name>
+npx skills add github:silvanatrabalon/my-skills/skills/<skill-name> -a claude-code
 ```
+
+Always pass `-a claude-code` — without it, the installer prompts for (or defaults to)
+a generic `.agents/skills/` location instead of writing straight to `.claude/skills/`.
 
 **Examples:**
 
 ```bash
-npx skills add github:silvanatrabalon/my-skills/skills/git-env-skill
-npx skills add github:silvanatrabalon/my-skills/skills/excalidraw-diagram
-npx skills add github:silvanatrabalon/my-skills/skills/skill-creator
-npx skills add github:silvanatrabalon/my-skills/skills/skill-linter
-npx skills add github:silvanatrabalon/my-skills/skills/cv-builder
-npx skills add github:silvanatrabalon/my-skills/skills/trinity-workflow
+npx skills add github:silvanatrabalon/my-skills/skills/git-env-skill -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/excalidraw-diagram -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/skill-creator -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/skill-linter -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/cv-builder -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/trinity-workflow -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/open-pull-request -a claude-code
 ```

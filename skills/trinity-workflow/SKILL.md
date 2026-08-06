@@ -88,7 +88,7 @@ Check whether a conventional-commit skill for Claude Code already exists in this
 If it's missing, **install the real one from this same skill's source repo** rather than writing a generic equivalent from scratch:
 
 ```bash
-npx skills add github:silvanatrabalon/my-skills/skills/conventional-commit
+npx skills add github:silvanatrabalon/my-skills/skills/conventional-commit -a claude-code
 ```
 
 This is the same skill trinity-workflow itself ships from — reuse it instead of reinventing it. Only fall back to writing a simple equivalent by hand if `npx` isn't available or the install genuinely fails (e.g. no network access); tell the user which case applied.
