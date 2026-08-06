@@ -14,6 +14,7 @@ A collection of reusable AI skills for Claude.
 | [`skill-linter`](./skills/skill-linter) | Validate skills against the agentskills.io specification — frontmatter, structure, line limits, and content quality rules. |
 | [`cv-builder`](./skills/cv-builder) | Interview the user for CV/resume data and render an ATS-optimized, single-column PDF for software engineering roles, tailored to a target job posting. |
 | [`trinity-workflow`](./skills/trinity-workflow) | Bootstrap the Trinity Workflow in a repo for the first time: OpenSpec + project-tuned backlog-refinement agents, so every feature goes through a reviewed proposal before implementation. |
+| [`conventional-commit`](./skills/conventional-commit) | Stage changes and write git commits following Conventional Commits, with safety rails: no blind `git add .`, no secrets, no unsafe amends or force-pushes. |
 | [`open-pull-request`](./skills/open-pull-request) | Push the current branch and open a well-structured GitHub pull request via `gh`, with a consistent title format and a body that always answers what changed and how to test it. |
 | [`run-tests`](./skills/run-tests) | Run tests at the right scope — full suite, workspace, directory, or single file — with the correct command across Node, Python, Go, and Rust. |
 | [`investigate-ci-failure`](./skills/investigate-ci-failure) | Investigate a failing CI check (GitHub Actions, Jenkins, CircleCI) and return a short root-cause summary with file:line citations instead of raw log output. |
@@ -46,6 +47,7 @@ npx skills add github:silvanatrabalon/my-skills/skills/skill-creator -a claude-c
 npx skills add github:silvanatrabalon/my-skills/skills/skill-linter -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/cv-builder -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/trinity-workflow -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/conventional-commit -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/open-pull-request -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/run-tests -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/investigate-ci-failure -a claude-code
