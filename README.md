@@ -20,6 +20,10 @@ A collection of reusable AI skills for Claude.
 | [`investigate-ci-failure`](./skills/investigate-ci-failure) | Investigate a failing CI check (GitHub Actions, Jenkins, CircleCI) and return a short root-cause summary with file:line citations instead of raw log output. |
 | [`explore`](./skills/explore) | Thinking-partner mode for exploring ideas, investigating problems, and comparing options with diagrams — before or instead of implementing. |
 | [`adr-scaffold`](./skills/adr-scaffold) | Bootstrap an Architecture Decision Records (ADR) folder structure (`docs/decisions/`) in a repo for the first time, with a worked example and an archive lifecycle. |
+| [`review-pr`](./skills/review-pr) | Multi-phase, multi-specialist local PR review — risk-surface detection, an adversarial challenger pass, and a `priorities.md` deliverable. Never posts to GitHub automatically. |
+| [`review-pr-curate`](./skills/review-pr-curate) | Human gate between a local `review-pr` output and GitHub — select which findings actually get posted. |
+| [`review-pr-post`](./skills/review-pr-post) | Publish curated `review-pr` findings to GitHub as inline comments and a review summary, idempotently. |
+| [`review-pr-close`](./skills/review-pr-close) | Record acted/dismissed outcomes per finding after a reviewed PR is merged, feeding `review-pr`'s precision tracking. |
 
 ---
 
@@ -53,4 +57,8 @@ npx skills add github:silvanatrabalon/my-skills/skills/run-tests -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/investigate-ci-failure -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/explore -a claude-code
 npx skills add github:silvanatrabalon/my-skills/skills/adr-scaffold -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/review-pr -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/review-pr-curate -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/review-pr-post -a claude-code
+npx skills add github:silvanatrabalon/my-skills/skills/review-pr-close -a claude-code
 ```
